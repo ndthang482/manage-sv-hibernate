@@ -45,7 +45,7 @@ public class ClassController {
             classEntity.setDatecreated(null);
 
             //Save to database
-            classRepository.save(new ClassEntity(0,name,major,null));
+            classRepository.save(new ClassEntity(1,name,major,null));
 
         } catch (Exception e) {
             e.printStackTrace();

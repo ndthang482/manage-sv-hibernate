@@ -1,7 +1,6 @@
 package com.sat.satellite.Database.Entity;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
@@ -10,13 +9,13 @@ public class ClassEntity {
     private int id;
     private String name;
     private String major;
-    private Timestamp datecreated;
+    private Integer datecreated;
 
     public ClassEntity(){
 
     }
 
-    public ClassEntity(int id, String name, String major, Timestamp datecreated) {
+    public ClassEntity(int id, String name, String major, Integer datecreated) {
         this.id = id;
         this.name = name;
         this.major = major;
@@ -55,12 +54,12 @@ public class ClassEntity {
 
     @Basic
     @Column(name = "datecreated")
-    public Timestamp getDatecreated() {
+    public Integer getDatecreated() {
         return datecreated;
     }
 
-    public void setDatecreated(Timestamp datacreated) {
-        this.datecreated = datacreated;
+    public void setDatecreated(Integer datecreated) {
+        this.datecreated = datecreated;
     }
 
     @Override

@@ -6,7 +6,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "DEMO_1_Student", schema = "satellit_University")
 public class StudentEntity {
-    private int id;
+    private Integer id;
     private String name;
     private String phone;
     private String email;
@@ -14,11 +14,11 @@ public class StudentEntity {
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

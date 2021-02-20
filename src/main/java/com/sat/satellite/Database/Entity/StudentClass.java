@@ -11,7 +11,6 @@ public class StudentClass {
     private ClassEntity demo1ClassByClassid;
 
     @Id
-    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -34,7 +33,6 @@ public class StudentClass {
     }
 
     @ManyToOne
-    @JoinColumn(name = "studentid", referencedColumnName = "id", nullable = false)
     public StudentEntity getDemo1StudentByStudentid() {
         return demo1StudentByStudentid;
     }
@@ -44,7 +42,6 @@ public class StudentClass {
     }
 
     @ManyToOne
-    @JoinColumn(name = "classid", referencedColumnName = "id", nullable = false)
     public ClassEntity getDemo1ClassByClassid() {
         return demo1ClassByClassid;
     }
