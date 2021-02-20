@@ -1,0 +1,94 @@
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:if="${CmtList.isEmpty()}">
+    <hr>
+    <p style="text-align:center;font-family: Arial,sans-serif;font-size: 14px;font-weight: 700;color: grey">
+        <i>Chưa có câu trả lời nào</i></p>
+</th:block>
+<th:block th:if="${!CmtList.isEmpty()}">
+    <hr>
+    <p style="text-align:center;font-family: Arial,sans-serif;font-size: 14px;font-weight: 700;color: orange">
+        <i>Bình luận có nhiều like hơn sẽ được ưu tiên hiển thị</i></p>
+</th:block>
+
+<div id="cmt_fpt_list_new">
+    <th:block th:each="i:${CmtList}">
+        <div class="p-3 bg-white rounded" style="border: 1px solid grey;">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex flex-row user"><img width="50" height="50" class="rounded-circle img-fluid img-responsive"
+                                                       style="max-width: 50px;max-height: 50px"
+                                                       th:src="${i.userByUser.uAvatar}" alt="none"/>
+                    <div class="d-flex flex-column ml-2">
+
+                        <a style="color:black" th:href="'/profile/'+${i.userByUser.uName}">
+                            <th:block th:if="${i.userByUser.uRole == 0}">
+                                                        <span style="color: orangered;font-weight: 700">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
+                                                          <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                                                          <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+                                                        </svg>&nbsp;ADMIN
+                                                        </span>
+                            </th:block>
+                            <th:block th:if="${i.userByUser.uRole == 1}">
+                                                        <span style="color: darkorange;font-weight: 700">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-heading" viewBox="0 0 16 16">
+                                                          <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                                                          <path d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z"/>
+                                                        </svg>&nbsp;MOD
+                                                        </span>
+                            </th:block>
+                            <th:block th:if="${i.userByUser.uRole == 2}">
+                                                        <span style="color: cadetblue;font-weight: 700">
+                                                        &nbsp;USER
+                                                        </span>
+                            </th:block>
+                            <th:block th:if="${i.userByUser.uRole == 3}">
+                                                        <span style="color: gray;font-weight: 700">
+                                                        &nbsp;GUEST
+                                                        </span>
+                            </th:block>
+                            <th:block th:if="${CmtList.indexOf(i)==0}">
+                                                        <span onmouseleave="this.style.color='black'" onmouseover="this.style.color='blue'" class="font-weight-bold hover">[(${i.userByUser.uName})]&nbsp;&nbsp;&nbsp;
+                                                            <span style="color: orange;font-weight: 700">
+                                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                                            </svg>&nbsp;Tin cậy
+                                                            </span>
+                                                        </span>
+                            </th:block>
+                            <th:block th:if="${CmtList.indexOf(i)!=0}">
+                                                        <span onmouseleave="this.style.color='black'" onmouseover="this.style.color='blue'" class="font-weight-bold hover">[(${i.userByUser.uName})]&nbsp;&nbsp;&nbsp;
+                                                        </span>
+                            </th:block>
+                        </a>
+
+                        <span class="day">[(${i.datecreated})]</span>
+                    </div>
+                </div>
+                <th:block th:if="${session.get('cmt_liked_of_[[${i.id}]]')!=null}">
+                    <div th:id="'cmt-like-of-'+${i.id}" th:onclick="unlike([[${i.id}]])" class="d-flex align-items-center px-3 heart border">
+                        <i th:id="'icon-like-of-'+${i.id}" class="fa fa-heart heart-icon"></i>
+                        <span style="font-weight: 600;color:orange">[(${i.validate})]</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="ml-2" style="font-weight: 600;color:green"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trophy-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                      <path fill-rule="evenodd" d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935z"></path>
+                                    </svg>&nbsp;[(${i.getUserByUser().uStrengthCreation})]</span>
+                    </div>
+                </th:block>
+                <th:block th:if="${session.get('cmt_liked_of_[[${i.id}]]')==null}">
+                    <div th:id="'cmt-like-of-'+${i.id}" th:onclick="addlike([[${i.id}]])" class="d-flex align-items-center px-3 heart border">
+                        <i th:id="'icon-like-of-'+${i.id}" class="fa fa-heart heart-icon" style="color: gray"></i>
+                        <span style="font-weight: 600;color:orange">[(${i.validate})]</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="ml-2" style="font-weight: 600;color:green"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trophy-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                      <path fill-rule="evenodd" d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935z"></path>
+                                    </svg>&nbsp;[(${i.getUserByUser().uStrengthCreation})]</span>
+                    </div>
+                </th:block>
+            </div>
+            <div class="comment-text text-justify mt-2">
+                <div style="font-family: Dosis,sans-serif">[(${i.comment})]</div>
+            </div>
+        </div>
+    </th:block>
+</div>

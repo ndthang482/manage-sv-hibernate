@@ -1,0 +1,65 @@
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+
+<!--====== TOP CONTENT - BLOG ======-->
+<div th:fragment="content">
+    <div class="hero-area" >
+
+        <div class="hero-slides owl-carousel">
+            <div class="single-hero-slide bg-img background-overlay"
+                 th:style="|background-image: url('/Resource/blogsite/img/blog-img/bg2.jpg')|"></div>
+
+            <div class="single-hero-slide bg-img background-overlay"
+                 th:style="|background-image: url('/Resource/blogsite/img/blog-img/bg1.jpg')|"></div>
+        </div>
+
+        <!--SLIDING TEXT-->
+        <div class="hero-post-area" style="top:180px;z-index: 25">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="hero-post-slide">
+
+                            <div class="single-slide d-flex align-items-center">
+                                <div class="post-number">
+                                    <p style="color:white">1</p>
+                                </div>
+                                <div class="post-title">
+                                    <a href="/blog/new">Thuận tiện - Bạn có thể viết blog ngay cả khi chưa đăng nhập</a>
+                                </div>
+                            </div>
+
+                            <div class="single-slide d-flex align-items-center">
+                                <div class="post-number">
+                                    <p style="color:white">2</p>
+                                </div>
+                                <div class="post-title">
+                                    <a href="/login">Kiến thức - Giúp bạn củng cố kiến thức vừa học tốt nhất</a>
+                                </div>
+                            </div>
+
+                            <div class="single-slide d-flex align-items-center">
+                                <div class="post-number">
+                                    <p style="color:white">3</p>
+                                </div>
+                                <div class="post-title">
+                                    <a href="#">Viết blog tạo thương hiệu cá nhân cho bạn</a>
+                                </div>
+                            </div>
+
+                            <div class="single-slide d-flex align-items-center">
+                                <div class="post-number">
+                                    <p style="color:white">4</p>
+                                </div>
+                                <div class="post-title">
+                                    <a href="#">Nội dung đa dạng, phong phú, liên tục mở rộng và không giới hạn chủ đề</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit: [(${BlogSelected.title})]</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+          content="Sửa bài viết">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Đoàn Đức Tín">
+    <meta property="og:image" th:content="${BlogSelected.image}"/>
+    <th:block th:insert="Common/_css :: content"/>
+
+    <!-- Custom -->
+    <link rel="stylesheet" th:href="@{/Resource/blogsite/style.css}">
+    <link rel="stylesheet" th:href="@{/Resource/codesnnipets/prism.css}">
+    <style>
+        .rate {
+            float: left;
+            height: 46px;
+            padding: 0 10px;
+        }
+        .rate:not(:checked) > input {
+            position:absolute;
+            top:-9999px;
+        }
+        .rate:not(:checked) > label {
+            float:right;
+            width:1em;
+            overflow:hidden;
+            white-space:nowrap;
+            cursor:pointer;
+            font-size:30px;
+            color:#ccc;
+        }
+        .rate:not(:checked) > label:before {
+            content: '★ ';
+        }
+        .rate > input:checked ~ label {
+            color: #ffc700;
+        }
+        .rate:not(:checked) > label:hover,
+        .rate:not(:checked) > label:hover ~ label {
+            color: #deb217;
+        }
+        .rate > input:checked + label:hover,
+        .rate > input:checked + label:hover ~ label,
+        .rate > input:checked ~ label:hover,
+        .rate > input:checked ~ label:hover ~ label,
+        .rate > label:hover ~ input:checked ~ label {
+            color: #c59b08;
+        }
+
+        /* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
+
+        .ftco-navbar-light{
+            position: absolute;
+            background-color: transparent !important;
+        }
+        .fa-angle-left{
+            margin-left: 12px;
+            padding: 0;
+            text-align: left;
+        }
+        .fa-angle-right{
+            margin-left: 12px;
+            padding: 0;
+            text-align: left;
+        }
+        .fa-angle-up{
+            padding: 0;
+            margin: 0;
+        }
+        .input-image-hidden{
+
+        }
+        .myerror{
+            font-family: Arial, Baskerville, monospace;
+            font-weight: 700;
+            color: red;
+            font-size: 10px;
+        }
+        @media (max-width: 600px) {
+            .input-image-hidden{
+                display: none;
+            }
+        }
+    </style>
+    <script src="https://cdn.tiny.cloud/1/90qladyecfroqnj6mllsoy294bi49oudx9kgkzjyviz3a090/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+</head>
+<body>
+
+<th:block th:insert="Common/header :: content"/>
+<th:block th:insert="Common/topcontent_blog :: content"/>
+
+<div class="main-content-wrapper " style="padding-top: 30px">
+    <div class="container-fluid">
+
+        <div class="row justify-content-center">
+            <div style="padding: 10px 45px 10px 45px;background-color: lightgray;border-radius: 8px">
+                <th:block th:if="${BlogSelected.isPublic == -1}">
+                    <span style="color: forestgreen;font-family: Dosis, serif;font-weight: 700;font-size: 18px">
+                        Bàn viết này đang là bản nháp, bạn có thể chỉnh sửa bất kỳ khi nào bạn muốn
+                    </span>
+                </th:block>
+                <th:block th:if="${BlogSelected.isPublic == 0}">
+                    <span style="color: darkorange;font-family: Dosis, serif;font-weight: 700;font-size: 18px">
+                        Bài viết này đang được xếp hàng đợi để duyệt, vui lòng quay lại sau vài giờ
+                    </span>
+                </th:block>
+                <th:block th:if="${BlogSelected.isPublic == 1}">
+                    <span style="color: red;font-family: Dosis, serif;font-weight: 700;font-size: 18px">
+                        Chú ý: đây là một bài Blog đã được duyệt, hành động chỉnh sửa không được khuyến khích
+                    </span>
+                </th:block>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+
+            <!--CONTENT VIEW-->
+            <div id="blog-viewdemo" class="col-12 col-lg-9">
+                <div class="single-blog-content mb-100">
+
+                    <div class="row post-meta" style="padding-bottom: 8px">
+                        <img width="35px" height="35px" style="border-radius: 50px;margin-left: 35px" th:src="${BlogSelected.userByUser.uAvatar}"/>
+                        <p style="font-weight: 700">&nbsp;&nbsp;
+                            <th:block th:if="${BlogSelected.datemodified == null}">
+                                <a th:href="'/profile/'+${BlogSelected.userByUser.uName}" class="post-author">[(${BlogSelected.userByUser.uName})]</a> created on
+                                <a href="#" class="post-date">[(${BlogSelected.datecreated})]</a>
+                            </th:block>
+                            <th:block th:if="${BlogSelected.datemodified != null}">
+                                <a th:href="'/profile/'+${BlogSelected.userByUser.uName}" class="post-author">[(${BlogSelected.userByUser.uName})]</a> last edited on
+                                <a href="#" class="post-date">[(${BlogSelected.datemodified})]</a>
+                            </th:block>
+                        </p>
+                    </div>
+
+                    <div class="post-content">
+
+                        <h1 style="font-family:'Work Sans','sans-serif'">[(${BlogSelected.title})]</h1>
+                        <blockquote class="mb-30" style="border-color:darkorange">
+                            <h6 style="font-family:'Work Sans','sans-serif'">[(${BlogSelected.description})]</h6>
+                        </blockquote>
+                        <div class="row justify-content-center">
+                            <img style="max-height: 500px" th:src="${BlogSelected.image}"/>
+                        </div>
+
+                    </div>
+
+                    <div class="post-content">
+                        [(${BlogSelected.text})]
+                    </div>
+
+                </div>
+            </div>
+
+            <th:block th:if="${BlogSelected.isPublic != 0}">
+                <!--CONTENT BLOG-->
+                <div id="blog-viewcontent" class="col-12 col-lg-9" style="display: none">
+
+                    <!--LEFT -> WRITE BLOG-->
+                    <div class="title">
+                        <h5 style="font-weight: 700;font-family: Dosis, serif">Tạo bài viết mới</h5>
+                        <hr>
+                    </div>
+
+                    <div class="post-a-comment-area" style="padding-right:0;padding-left: 0">
+                        <form id="blog-form" method="post">
+                            <input type="hidden" name="blog-id" th:value="${BlogSelected.id}">
+                            <div style="padding-left: 20px;padding-right: 20px">
+                                <h5>Thông tin cơ bản</h5>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="group">
+                                            <input type="text" name="blog-title" required th:value="${BlogSelected.title}">
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <label>Nhập tiêu đề bài viết (20-69 chữ cái)&nbsp;
+                                                <span class="myerror" id="error-title-1" style="display: none">* Đảm bảo độ dài</span>
+                                                <span class="myerror" id="error-title-2" style="display: none">* Không chứa dấu đặc biệt như ngoặc đơn, ngoặc kép,...</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label id="error-image" for="input-blog-thumb" class="btn btn-outline-primary" style="font-size: 13px;font-weight: 700;">Chọn ảnh giới thiệu</label>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="group">
+                                            <input onchange="previewFile()" accept="image/jpeg,image/jpg,image/png,video/mp4,video/mkv" id="input-blog-thumb" class="input-image-hidden" type="file" name="blogthumb" required style="overflow-x: hidden">
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span id="error-image-1" class="myerror" style="display: none">* Ảnh giới thiệu phải có định dạng phù hợp và nhỏ hơn 30mb</span>
+                                <div class="row justify-content-center">
+                                    <div class="col-12">
+                                        <img id="preview-thumb" style="width: 70%;max-height: 500px" th:src="${BlogSelected.image}">
+                                    </div>
+                                </div>
+                                <br><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="group">
+                                            <textarea name="blog-des" required>[(${BlogSelected.description})]</textarea>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <label>Tóm tắt ngắn gọn về bài viết (20-5000 chữ cái)&nbsp;
+                                                <span class="myerror" id="error-des-1" style="display: none">* Đảm bảo độ dài</span>
+                                                <span class="myerror" id="error-des-2" style="display: none">* Không chứa dấu đặc biệt như ngoặc đơn, ngoặc kép,...</span>  </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div class="group">
+                                            <input type="text" name="blog-name" required th:value="${BlogSelected.name}">
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <label>Định danh bài viết (*) (bất kỳ 20-69 chữ cái)&nbsp;
+                                                <span class="myerror" id="error-name-1" style="display: none">* Đảm bảo độ dài</span>
+                                                <span class="myerror" id="error-name-2" style="display: none">* Chỉ cho phép chữ không dấu và chữ số</span>
+                                                <span class="myerror" id="error-name-3" style="display: none">* Link này đã được sử dụng, bạn hãy chọn một tên khác</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="group">
+                                            <input type="text" name="blog-category" required th:value="${BlogSelected.category}">
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <label>Chủ đề bài viết (bất kỳ 1-10 chữ cái)&nbsp;
+                                                <span class="myerror" id="error-category-1" style="display: none">* Đảm bảo độ dài</span>
+                                                <span class="myerror" id="error-category-2" style="display: none">* Không chứa chữ đặc biệt</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p style="color: grey;font-weight: 600;font-size: 10px">(*) Định danh bài viết là đường link bạn muốn hiển thị khi truy cập vào blog thay cho id (nhằm mục đích dễ nhớ), bạn có thể đặt bất kỳ tên gì, ví dụ một số định danh: 'hashmap trong java la gi', 'lap trinh huong doi tuong', 'chia khoa thanh cong', ...</p>
+                            </div>
+
+                            <br>
+
+                            <div style="padding-left: 20px;padding-right: 20px">
+                                <h5>Nội dung chính (ít nhất 80 từ)</h5>
+                                <span class="myerror" id="error-text" style="display: none">* Bài viết của bạn quá ngắn, hãy tiếp tục viết thêm nhé</span>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="group">
+                                        <input type="hidden" id="blog-editor" name="blog-editor">
+                                        <textarea id="blog-content" required></textarea>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div style="padding-left: 20px;padding-right: 20px">
+                                <h5>Thông tin liên hệ</h5>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="group">
+                                            <textarea name="comment"></textarea>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <label>Ghi chú (có thể để trống)</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                    <br><br><br>
+
+                </div>
+            </th:block>
+
+            <!--ASIDE-->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="post-sidebar-area mb-100">
+
+                    <!--FUNCTION-->
+                    <div class="sidebar-widget-area">
+                        <h5 class="title">Thao tác</h5>
+                        <div class="widget-content" style="width: 100%">
+                            <a href="/blog"><button class="btn btn-success" style="border:0;background: linear-gradient(to right, #009fff, #ec2f4b);font-size: 12px;font-weight: 700;margin-bottom: 3px">TRENDING BLOGS</button></a>
+                            <hr>
+                            <a href="/blog/new"><button class="btn btn-outline-primary" style="font-size: 12px;font-weight: 700;margin-bottom: 3px">Viết bài (*)</button></a>
+
+                            <a th:href="'/blog/manager/'+${session.user.uName}"><button class="btn btn-outline-primary" style="font-size: 12px;font-weight: 700;margin-bottom: 3px">Quản lý bài</button></a>
+
+                            <th:block th:if="${BlogSelected.isPublic != 0}">
+                                <p style="font-size: 10px;color:dimgrey;margin: 0">&nbsp;&nbsp;Bật chỉnh sửa để hiển thị nút lưu bài</p>
+                                <button onclick="turnEdit()" id="edit-blog-btn" class="btn btn-outline-warning" style="font-size: 12px;font-weight: 700;margin-bottom: 3px">Bật chỉnh sửa bài viết</button>
+                                <hr id="edit-hr" style="display: none">
+                                <th:block th:if="${BlogSelected.isPublic == -1}">
+                                    <a><button id="save-blog-btn-1" class="btn btn-outline-primary" style="display:none;font-size: 12px;font-weight: 700;margin-bottom: 3px" onclick="submitDraft(this)">Lưu nháp bài này</button></a>
+                                </th:block>
+                                <th:block th:if="${BlogSelected.isPublic == 1}">
+                                    <a><button id="save-blog-btn-2" class="btn btn-outline-primary" style="display:none;font-size: 12px;font-weight: 700;margin-bottom: 3px" onclick="submitDraft(this)">Lưu bản nháp mới</button></a>
+                                </th:block>
+                                <a><button id="submit-blog-btn" class="btn btn-outline-success" style="display:none;font-size: 12px;font-weight: 700;margin-bottom: 3px" onclick="submitBlog(this)">Lưu và yêu cầu duyệt</button></a>
+                            </th:block>
+                            <th:block th:if="${BlogSelected.isPublic == 0}">
+                                <button class="btn btn-secondary disabled" style="font-size: 12px;font-weight: 700;margin-bottom: 3px">Bật chỉnh sửa bài viết</button>
+                            </th:block>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<th:block th:insert="Common/_js :: content"/>
+<th:block th:insert="Common/footer :: content"/>
+
+<!-- Custom -->
+<script th:src="@{/Resource/blogsite/js/jquery/jquery-2.2.4.min.js}"></script>
+<script th:src="@{/Resource/blogsite/js/popper.min.js}"></script>
+<script th:src="@{/Resource/blogsite/js/bootstrap.min.js}"></script>
+<script th:src="@{/Resource/blogsite/js/plugins.js}"></script>
+<script th:src="@{/Resource/blogsite/js/active.js}"></script>
+<script th:src="@{/Resource/codesnnipets/prism.js}"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-23581568-13');
+    document.getElementById('drop-fpt-all').addEventListener('click',()=>{
+        x=document.getElementById('header-dropdown-menu');
+        y=document.getElementById('header-dropdown-content');
+        if (x.classList.contains('show')){
+            x.classList.remove('show');
+            y.classList.remove('show');
+        }else{
+            x.classList.add('show');
+            y.classList.add('show');
+        }
+    })
+    x=document.getElementById('drop-btn-login');
+    if (x!==null) x.addEventListener('click',()=>{
+        if (document.getElementById('drop-menu-login').classList.contains('show')){
+            document.getElementById('drop-menu-login').classList.remove('show');
+        }else{
+            document.getElementById('drop-menu-login').classList.add('show');
+        }
+    })
+    document.querySelector('.owl-stage-outer').style.height='260px';
+    document.getElementById('scrollUp').style.left='30px';
+</script>
+<script type="text/javascript" th:inline="javascript">
+    tinymce.init({
+        height: 700,
+        selector: '#blog-content',
+        plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak searchreplace code wordcount codesample charmap',
+        toolbar: 'undo redo | styleselect | forecolor backgroundcolor | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link charmap image | code codesample | searchreplace',
+        toolbar_mode: 'floating',
+        setup: function (editor) {
+            editor.on('init', function (e) {
+                editor.setContent([[${BlogSelected.text}]]);
+            });
+        }
+    });
+</script>
+
+<!--Function-->
+<script>
+    function goto(x){
+        window.location=x;
+    }
+</script>
+<th:block th:if="${BlogSelected.isPublic != 0}">
+    <script>
+        editable=0;
+        function previewFile() {
+            x=document.getElementById('error-image');
+            x.classList.remove('btn-outline-danger');
+            x.classList.add('btn-outline-primary');
+            x.innerText='Chọn ảnh giới thiệu';
+            const preview = document.getElementById("preview-thumb");
+            const file = document.getElementById("input-blog-thumb").files[0];
+            const reader1 = new FileReader();
+            reader1.addEventListener("load", function () {
+                preview.src = reader1.result;
+            }, false);
+
+            if (file) {
+                reader1.readAsDataURL(file);
+            }
+        }
+        function displayError(s) {
+            hiddenError();
+            const tmp=s.split('|');
+            for (let i=0;i<tmp.length;i++){
+                switch (tmp[i].toString()) {
+                    case "NAME_FORMAT_WRONG":document.getElementById('error-name-2').style.display='';break;
+                    case "TITLE_FORMAT_WRONG":document.getElementById('error-title-2').style.display='';break;
+                    case "DES_FORMAT_WRONG":document.getElementById('error-des-2').style.display='';break;
+                    case "CATEGORY_FORMAT_WRONG":document.getElementById('error-category-2').style.display='';break;
+                    //------
+                    case "NAME_LENGTH_WRONG":document.getElementById('error-name-1').style.display='';break;
+                    case "TITLE_LENGTH_WRONG":document.getElementById('error-title-1').style.display='';break;
+                    case "DES_LENGTH_WRONG":document.getElementById('error-des-1').style.display='';break;
+                    case "CATEGORY_LENGTH_WRONG":document.getElementById('error-category-1').style.display='';break;
+                    case "TEXT_LENGTH_WRONG":document.getElementById('error-text').style.display='';break;
+                    //------
+                    case "BLOG_NAME_EXITS":document.getElementById('error-name-3').style.display='';break;
+                    case "THUMB_NOT_ACCEPTED":
+                        document.getElementById('error-image-1').style.display='';
+                        x=document.getElementById('error-image');
+                        x.classList.remove('btn-outline-primary');
+                        x.classList.add('btn-outline-danger');
+                        x.innerText='Kiểm tra lại tệp này';
+                        break;
+                    default:break;
+                }
+            }
+        }
+        function hiddenError(){
+            document.querySelectorAll('.myerror').forEach(e => e.style.display='none')
+            x=document.getElementById('error-image');
+            x.classList.remove('btn-outline-danger');
+            x.classList.add('btn-outline-primary');
+            x.innerText='Chọn ảnh giới thiệu';
+        }
+        function turnEdit(){
+            tmp1 = document.getElementById('save-blog-btn-1');
+            tmp2 = document.getElementById('save-blog-btn-2');
+            if (!editable){
+                editable=1;
+                document.getElementById('edit-hr').style.display='';
+                document.getElementById('submit-blog-btn').style.display='';
+                if (tmp1 !== null) tmp1.style.display='';
+                if (tmp2 !== null) tmp2.style.display='';
+                document.getElementById('edit-blog-btn').innerText='Tắt chỉnh sửa bài viết';
+                //----
+                document.getElementById('blog-viewdemo').style.display='none';
+                document.getElementById('blog-viewcontent').style.display='';
+            }else{
+                editable=0;
+                document.getElementById('edit-hr').style.display='none';
+                document.getElementById('submit-blog-btn').style.display='none';
+                if (tmp1 !== null) tmp1.style.display='none';
+                if (tmp2 !== null) tmp2.style.display='none';
+                document.getElementById('edit-blog-btn').innerText='Bật chỉnh sửa bài viết';
+                //----
+                document.getElementById('blog-viewcontent').style.display='none';
+                document.getElementById('blog-viewdemo').style.display='';
+            }
+        }
+    </script>
+    <th:block th:if="${BlogSelected.isPublic == 1}">
+        <script>
+            function submitDraft(a) {
+                if (a.innerHTML !== 'Lưu bản nháp mới') return;
+                a.innerHTML = '<i class="fa fa-circle-o-notch fa-spin" style="padding: 0;margin: 0"></i>\n';
+                document.getElementById('blog-editor').value=tinyMCE.activeEditor.getContent();
+                var formData = new FormData(document.getElementById("blog-form"));
+                $.ajax({
+                    type: 'POST',
+                    url: '/blog/api/edit/draft',
+                    contentType: false,
+                    processData: false,
+                    //contentType: 'application/json',
+                    data: formData,
+                }).done(function (result) {
+                    if (result.toString().substring(0, 7) === "//ERROR") {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'error',
+                            title: "Có lỗi xảy ra, copy để tránh mất bài",
+                            text: "Kiểm tra các nội dung nhập vào (báo đỏ)",
+                            showConfirmButton: false,
+                            timer: 4000
+                        })
+                        displayError(result.toString().substring(7));
+                    } else {
+                        let timerInterval
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: "Nội dung đã được lưu",
+                            text: "Bạn có thể tiếp tục chỉnh sửa bản nháp mới này tại mục Quản lý bài",
+                            showConfirmButton: false,
+                            timer: 4000,
+                            timerProgressBar: true,
+                            allowClickOutside: false,
+                            allowOutsideClick: false,
+                            willOpen: () => {
+                                Swal.showLoading()
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        }).then((result) => {
+                            window.location='${pageContext.request.contextPath}/manageblog/${sessionScope.user.uName}'
+                        })
+                    }
+                    a.innerHTML='Lưu bản nháp mới';
+                });
+            }
+        </script>
+    </th:block>
+    <th:block th:if="${BlogSelected.isPublic == -1}">
+        <script>
+            function submitDraft(a) {
+                if (a.innerHTML !== 'Lưu nháp bài này') return;
+                a.innerHTML = '<i class="fa fa-circle-o-notch fa-spin" style="padding: 0;margin: 0"></i>\n';
+                document.getElementById('blog-editor').value=tinyMCE.activeEditor.getContent();
+                var formData = new FormData(document.getElementById("blog-form"));
+                $.ajax({
+                    type: 'POST',
+                    url: '/blog/api/edit/draft',
+                    contentType: false,
+                    processData: false,
+                    //contentType: 'application/json',
+                    data: formData,
+                }).done(function (result) {
+                    if (result.toString().substring(0, 7) === "//ERROR") {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'error',
+                            title: "Có lỗi xảy ra, copy để tránh mất bài",
+                            text: "Kiểm tra các nội dung nhập vào (báo đỏ)",
+                            showConfirmButton: false,
+                            timer: 4000
+                        })
+                        displayError(result.toString().substring(7));
+                    } else {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: "Nội dung đã được lưu",
+                                text: "Lưu bản nháp thành công",
+                                showConfirmButton: false,
+                                timer: 4000
+                            })
+                    }
+                    a.innerHTML='Lưu nháp bài này';
+                });
+            }
+        </script>
+    </th:block>
+    <script>
+        function submitBlog(a) {
+            if (a.innerHTML !== 'Lưu và yêu cầu duyệt') return;
+            a.innerHTML = '<i class="fa fa-circle-o-notch fa-spin" style="padding: 0;margin: 0"></i>&nbsp;Đang xử lí';
+            document.getElementById('blog-editor').value=tinyMCE.activeEditor.getContent();
+            var formData = new FormData(document.getElementById("blog-form"));
+            Swal.fire({
+                width:700,
+                title: 'Khi đăng bài, bạn sẽ đồng ý với những điều sau',
+                html: "<div style=\"overflow-y: scroll;display: block;height: 300px;text-align: left;\">" +
+                    "<div class='card'><p class='card-body' style='font-family: Arial, Baskerville, monospace'> Nội dung bạn đăng nên là một nội dung lành mạnh và có giá trị, hạn chế copy từ nơi khác và không nên chèn ảnh vào bài viết bằng cách ctrl c -> ctrl v ảnh từ nguồn khác), để bài viết được duyệt, hãy đảm bảo tránh những nội dung mang tính xúc phạm đến danh dự của một tập thể, một cá nhân, nội dung sai sự thật, nội dung thiếu tính sáng tạo,...</p></div>" +
+                    "<div class='card'><p class='card-body' style='font-family: Arial, Baskerville, monospace'> Khi bài viết được duyệt, nó sẽ trở thành sản phẩm của hệ thống nhưng tác giả của bài viết vẫn là bạn, bạn có quyền yêu cầu xóa hoặc ẩn quyền tác giả của mình cho bài viết đó nhưng không thể sửa đổi nội dung hoặc xóa bài viết này.</p></div>" +
+                    "<div class='card'><p class='card-body' style='font-family: Arial, Baskerville, monospace'>  Nếu bạn cố sửa đổi những nội dung đã được duyệt trong bài viết, hệ thống sẽ thực hiện quy trình như sau: (1) Tạo bài viết mới B với nội dung đã được sửa từ bài viết A, (2) Admin sẽ so sánh nội dung của cả 2 bài viết A và B, (3) Admin có thể hủy hoặc duyệt bài viết B, (4) Nếu bài viết B được duyệt, lượt xem, lượt rate, comment, tên định danh của bài viết B sẽ được cập nhật giống như bài viết A, sau đó bài viết A sẽ bị ngưng kích hoạt.</p></div></div>",
+                icon: 'warning',
+                showCancelButton: true,
+                showConfirmButton:true,
+                confirmButtonText: 'Tôi đồng ý',
+                allowClickOutside:false,
+                allowOutsideClick:false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/blog/api/edit',
+                        contentType: false,
+                        processData: false,
+                        //contentType: 'application/json',
+                        data: formData,
+                    }).done(function (result) {
+                        if (result.toString().substring(0, 7) === "//ERROR") {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'error',
+                                title: "Có lỗi xảy ra, copy để tránh mất bài",
+                                text: "Kiểm tra các nội dung nhập vào (báo đỏ)",
+                                showConfirmButton: false,
+                                timer: 4000
+                            })
+                            displayError(result.toString().substring(7));
+                        } else {
+                            let timerInterval
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: "Nội dung đã được lưu",
+                                text: "Bài viết của bạn đang chờ duyệt trước khi lên trang chủ",
+                                showConfirmButton: false,
+                                timer: 4000,
+                                timerProgressBar: true,
+                                allowClickOutside: false,
+                                allowOutsideClick: false,
+                                willOpen: () => {
+                                    Swal.showLoading()
+                                },
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            }).then((result) => {
+                                window.location='${pageContext.request.contextPath}/manageblog/${sessionScope.user.uName}'
+                            })
+                        }
+                        a.innerHTML='Lưu và yêu cầu duyệt';
+                    });
+                }else
+                    a.innerHTML='Lưu và yêu cầu duyệt';
+            })
+        }
+    </script>
+</th:block>
+
+</body>
+</html>

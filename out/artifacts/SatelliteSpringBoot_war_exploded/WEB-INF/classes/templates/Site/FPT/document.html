@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Satellite | Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Nơi chia sẻ tài liệu học tập về các chuyên ngành thông dụng được sưu tầm và tổng hợp từ nhiều nguồn">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Đoàn Đức Tín">
+    <meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/56f57942b09f955f052f9425/1461296361950-GMOA5U4ZYB6D4BOMY965/ke17ZwdGBToddI8pDm48kAt72yGFwHZjoxtmj75n0VMUqsxRUqqbr1mOJYKfIPR7wHSwpYRrzxWb3AxhO8KtM33JSwvFufbFab9Mit0fDEsrN1-8Q_X9ldEXlc8wrw7gInPi9iDjx9w8K4ZfjXt2dkungc-I4BSv4-QeR2dHhm9uAjxDvwODIJ6_x_tk-Ew1JvwGh1qtNWvMhYKnvaKhbA/blog-header.jpg?format=1500w" />
+    <th:block th:insert="Common/_css :: content"/>
+
+    <!--Custom-->
+    <style>
+        #arrowAnim {
+
+        }
+
+        .arrow {
+            width: 5vw;
+            height: 5vw;
+            border: 2.5vw solid;
+            border-color: black transparent transparent black;
+            transform: rotate(-45deg);
+        }
+
+
+        .arrowSliding {
+            right: 0;
+            bottom: 30px;
+            position: absolute;
+            -webkit-animation: slide 4s linear infinite;
+            animation: slide 4s linear infinite;
+        }
+
+        .delay1 {
+            -webkit-animation-delay: 1s;
+            animation-delay: 1s;
+        }
+        .delay2 {
+            -webkit-animation-delay: 2s;
+            animation-delay: 2s;
+        }
+        .delay3 {
+            -webkit-animation-delay: 3s;
+            animation-delay: 3s;
+        }
+        @-webkit-keyframes slide {
+            0% { opacity:0; transform: translateX(15vw); }
+            20% { opacity:1; transform: translateX(9vw); }
+            80% { opacity:1; transform: translateX(-9vw); }
+            100% { opacity:0; transform: translateX(-15vw); }
+        }
+        @keyframes slide {
+            0% { opacity:0; transform: translateX(15vw); }
+            20% { opacity:1; transform: translateX(9vw); }
+            80% { opacity:1; transform: translateX(-9vw); }
+            100% { opacity:0; transform: translateX(-15vw); }
+        }
+    </style>
+</head>
+<body>
+
+<th:block th:insert="Common/header :: content"/>
+<th:block th:insert="Common/topcontent :: content"/>
+
+<div class="container-fluid" style="padding-top:22px;background-color: #fafafa">
+    <div class="row justify-content-center">
+        <h6 style="font-weight: 600;font-size:20px;font-family:Dosis, serif;text-align: center">Bảng điều khiển</h6>
+    </div>
+    <div class="row justify-content-center">
+        <div class="btn-group justify-content-center" style="border: 2px solid grey;border-radius: 5px;padding: 10px;display: block">
+            <a th:href="@{/version/document}">
+            <button class="btn btn-outline-success" style="font-family:Arial, Baskerville, monospace;border-radius: 4px;font-weight: 600;margin: 6px">
+                <svg width="13px" viewBox="0 0 16 16" class="bi bi-bullseye" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                    <path fill-rule="evenodd" d="M8 13A5 5 0 1 0 8 3a5 5 0 0 0 0 10zm0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
+                    <path fill-rule="evenodd" d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+                    <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+                </svg>&nbsp;THEO DÕI SOURCE
+            </button>
+            </a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSepOiRp8xAGXkNOOA8gm--qSi6AiXsZC7dmDplAgi7e3ICeDw/viewform" target="_blank">
+                <button class="btn btn-outline-success" style="font-family:Arial, Baskerville, monospace;font-weight: 600;margin: 6px">
+                    <svg width="13px" viewBox="0 0 16 16" class="bi bi-cloud-upload" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M4.406 1.342A5.53 5.53 0 0 1 8 0c2.69 0 4.923 2 5.166 4.579C14.758 4.804 16 6.137 16 7.773 16 9.569 14.502 11 12.687 11H10a.5.5 0 0 1 0-1h2.688C13.979 10 15 8.988 15 7.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 2.825 10.328 1 8 1a4.53 4.53 0 0 0-2.941 1.1c-.757.652-1.153 1.438-1.153 2.055v.448l-.445.049C2.064 4.805 1 5.952 1 7.318 1 8.785 2.23 10 3.781 10H6a.5.5 0 0 1 0 1H3.781C1.708 11 0 9.366 0 7.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383z"></path>
+                        <path fill-rule="evenodd" d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3z"></path>
+                    </svg>&nbsp;ĐÓNG GÓP
+                </button>
+            </a>
+            <a href="#">
+                <button class="btn btn-outline-secondary" style="font-family:Arial, Baskerville, monospace;font-weight: 600;margin: 6px" onclick="showInstructionD1()">
+                    <svg width="13px" viewBox="0 0 16 16" class="bi bi-question-octagon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1L1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"></path>
+                        <path d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"></path>
+                    </svg>&nbsp;Hướng dẫn
+                </button>
+            </a>
+            <a href="#">
+                <button class="btn btn-outline-danger" style="font-family:Arial, Baskerville, monospace;font-weight: 600;margin: 6px" onclick="mayBeYouDoNotKnow()">
+                    <svg width="13px" viewBox="0 0 16 16" class="bi bi-bullseye" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                        <path fill-rule="evenodd" d="M8 13A5 5 0 1 0 8 3a5 5 0 0 0 0 10zm0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
+                        <path fill-rule="evenodd" d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+                        <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+                    </svg>&nbsp;Sao không gửi link drive cho nhanh ?
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- DE -->
+<div id="document-de-section" class="site-section fund-raisers bg-light" style="padding:0;font-family: arial,serif;">
+
+    <!--List of DE-->
+    <div class="container-fluid">
+            <div class="col-md-12 block-11">
+                <div class="nonloop-block-11 owl-carousel">
+
+                    <!--Introduction-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/20190107095549_software_engineering_basic.jpg?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h3 class="card-title" style="font-weight: 600">KỸ THUẬT PHẦN MỀM</h3>
+                                <p class="card-text">Trong một thế giới mà Internet và máy tính đang trở nên cần thiết bao giờ hết, thì việc phát triển phần mềm là một yếu tố không thể thiếu. Phát triển phần mềm là một quá trình phức tạp, gồm nhiều công đoạn</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div>
+                                    <div class="arrowSliding">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <div class="arrowSliding delay1">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <div class="arrowSliding delay2">
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <div class="arrowSliding delay3">
+                                        <div class="arrow"></div>
+                                    </div>
+                                </div>
+                                <th:block th:if="${session.user == null}">
+                                <a href="login">
+                                <span class="donation-time mb-3 d-block" style="color:red;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                                </svg>&nbsp;&nbsp;Đăng nhập để xem</span></a>
+                                </th:block>
+                            </div>
+
+                    </div>
+
+                    <th:block th:if="${session.user == null}">
+                        <!--Introduction-->
+                        <a href="login">
+                        <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+
+                            <img class="card-img-top"
+                                 src="https://thumbs.dreamstime.com/b/blocked-rubber-stamp-word-blocked-inside-illustration-108959249.jpg"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h3 class="card-title">Hãy đăng nhập</h3>
+                                <p class="card-text" style="color:#555555">Để tránh spam thì chúng tôi yêu cầu đăng nhập, bạn có thể đăng nhập bằng mail fpt hoặc mail cá nhân</p>
+
+                                <span class="donation-time mb-3 d-block" style="color:red;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                                </svg>&nbsp;&nbsp;Ấn để đăng nhập</span>
+
+                            </div>
+
+                        </div>
+                        </a>
+                    </th:block>
+
+                    <th:block th:if="${session.user != null}">
+                    <!--SE1-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="1">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/se1.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:green;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;MIỄN PHÍ</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu <input type="submit" class="btn-success"
+                                                                                   value="TRUY CẬP"
+                                                                                   style="float: right;font-size: 27px;border-radius: 2px">
+                                </h3>
+                                <p class="card-text">Kỳ 1</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 81%"
+                                         aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;">Có 19% tài liệu mới chưa được cập nhật</span>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!--SE2-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="2">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/se2.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:orange;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;92 STONE</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu <input type="submit" class="btn-warning"
+                                                                                   value="TRUY CẬP"
+                                                                                   style="float: right;font-size: 27px;border-radius: 2px">
+                                </h3>
+                                <p class="card-text">Kỳ 2</p>
+                                <span class="donation-time mb-3 d-block" style="color:red;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Đã tạm ngưng cập nhật</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 96%"
+                                         aria-valuenow="97" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;">Có 4% tài liệu mới chưa được cập nhật</span>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!--SE3-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="3">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/se3.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:orange;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;124 STONE</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu <input type="submit" class="btn-warning"
+                                                                                   value="TRUY CẬP"
+                                                                                   style="float: right;font-size: 27px;border-radius: 2px">
+                                </h3>
+                                <p class="card-text">Kỳ 3</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 94%"
+                                         aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;">Có 6% tài liệu mới chưa được cập nhật</span>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!--SE4-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="4">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/se4.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:orange;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;217 STONE</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu
+                                    <input type="submit" class="btn-warning"
+                                     value="TRUY CẬP"
+                                     style="float: right;font-size: 27px;border-radius: 2px">
+                                </h3>
+                                <p class="card-text">Kỳ 4</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 97%"
+                                         aria-valuenow="99" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;">Có 3% tài liệu mới chưa được cập nhật</span>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!--SE5-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="5">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/se5.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:orange;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;312 STONE</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu
+                                    <input type="submit" class="btn-warning"
+                                           value="TRUY CẬP"
+                                           style="float: right;font-size: 27px;border-radius: 2px">
+                                </h3>
+                                <p class="card-text">Kỳ 5</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
+                                         aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;">Có 0% tài liệu mới chưa được cập nhật</span>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!--SE6-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="6">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/se6.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:red;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;? STONE</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu
+                                </h3>
+                                <p class="card-text">Kỳ 6</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 5%"
+                                         aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;color:red;">Cần được đóng góp thêm tài liệu để mở khóa</span>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!--SE7-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="7">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/se7.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:red;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;? STONE</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu
+                                </h3>
+                                <p class="card-text">Kỳ 7</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 5%"
+                                         aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;color:red;">Cần được đóng góp thêm tài liệu để mở khóa</span>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!--SE8-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="8">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/se8.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:red;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;? STONE</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu
+                                </h3>
+                                <p class="card-text">Kỳ 8</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 5%"
+                                         aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;color:red;">Cần được đóng góp thêm tài liệu để mở khóa</span>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!--SE9-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="9">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/se9.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:red;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;? STONE</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu
+                                </h3>
+                                <p class="card-text">Kỳ 9</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 5%"
+                                         aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;color:red;">Cần được đóng góp thêm tài liệu để mở khóa</span>
+                            </div>
+
+                        </form>
+                    </div>
+                    </th:block>
+
+                </div>
+            </div>
+        </div>
+
+</div>
+
+<br>
+<hr style="display: block;height: 1px;order: 0;border-top: 4px solid #ccc;margin: 1em 0;padding: 0;"/>
+
+<!-- DS -->
+<div id="document-ds-section" class="site-section fund-raisers bg-light" style="padding:0;font-family: arial,serif;">
+
+    <!--List of DS-->
+    <div class="container-fluid">
+        <div class="col-md-12 block-11">
+            <div class="nonloop-block-11 owl-carousel">
+
+                <!--Introduction-->
+                <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+
+                    <img class="card-img-top"
+                         src="https://github.com/satellite1012/SatelliteWebImage/blob/master/bg_ds.jpg?raw=true"
+                         alt="Image placeholder">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-weight: 600">QUẢN TRỊ KINH DOANH</h3>
+                        <p class="card-text">Quản trị kinh doanh luôn là một trong những ngành hấp dẫn các bạn trẻ năng động, đặc biệt  trong xu thế hội nhập kinh tế Quốc tế của Việt Nam những năm gần đây</p>
+                        <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                        <div id="arrowAnim">
+                            <div class="arrowSliding">
+                                <div class="arrow"></div>
+                            </div>
+                            <div class="arrowSliding delay1">
+                                <div class="arrow"></div>
+                            </div>
+                            <div class="arrowSliding delay2">
+                                <div class="arrow"></div>
+                            </div>
+                            <div class="arrowSliding delay3">
+                                <div class="arrow"></div>
+                            </div>
+                        </div>
+                        <th:block th:if="${session.user == null}">
+                            <a href="login">
+                                <span class="donation-time mb-3 d-block" style="color:red;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                                </svg>&nbsp;&nbsp;Đăng nhập để xem</span></a>
+                        </th:block>
+                    </div>
+
+                </div>
+
+                <th:block th:if="${session.user == null}">
+                    <!--Introduction-->
+                    <a href="login">
+                        <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+
+                            <img class="card-img-top"
+                                 src="https://thumbs.dreamstime.com/b/blocked-rubber-stamp-word-blocked-inside-illustration-108959249.jpg"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h3 class="card-title">Hãy đăng nhập</h3>
+                                <p class="card-text" style="color:#555555">Để tránh spam thì chúng tôi yêu cầu đăng nhập, bạn có thể đăng nhập bằng mail fpt hoặc mail cá nhân</p>
+
+                                <span class="donation-time mb-3 d-block" style="color:red;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                                </svg>&nbsp;&nbsp;Ấn để đăng nhập</span>
+
+                            </div>
+
+                        </div>
+                    </a>
+                </th:block>
+
+                <th:block th:if="${session.user != null}">
+                    <!--DS1-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="6">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/ds1.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:orange;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;1 STONE</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu <input type="submit" class="btn-warning"
+                                                                                   value="TRUY CẬP"
+                                                                                   style="float: right;font-size: 27px;border-radius: 2px">
+                                </h3>
+                                <p class="card-text">Kỳ 1</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 2%"
+                                         aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;">Có 98% tài liệu mới chưa được cập nhật</span>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!--DS2-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="7">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/ds2.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:orange;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;1 STONE</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu <input type="submit" class="btn-warning"
+                                                                                      value="TRUY CẬP"
+                                                                                      style="float: right;font-size: 27px;border-radius: 2px">
+                                </h3>
+                                <p class="card-text">Kỳ 2</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 0%"
+                                         aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;">Có 100% tài liệu mới chưa được cập nhật</span>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!--DS3-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="8">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/ds3.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:orange;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;1 STONE</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu <input type="submit" class="btn-warning"
+                                                                                      value="TRUY CẬP"
+                                                                                      style="float: right;font-size: 27px;border-radius: 2px">
+                                </h3>
+                                <p class="card-text">Kỳ 3</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 4%"
+                                         aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;">Có 96% tài liệu mới chưa được cập nhật</span>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!--DS4-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="9">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/ds4.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:orange;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;1 STONE</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu <input type="submit" class="btn-warning"
+                                                                                      value="TRUY CẬP"
+                                                                                      style="float: right;font-size: 27px;border-radius: 2px">
+                                </h3>
+                                <p class="card-text">Kỳ 4</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 68%"
+                                         aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;">Có 32% tài liệu mới chưa được cập nhật</span>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!--DS5-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="10">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/ds5.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:red;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;? STONE</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu
+                                </h3>
+                                <p class="card-text">Kỳ 6</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 5%"
+                                         aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;color:red;">Cần được đóng góp thêm tài liệu để mở khóa</span>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!--DS6-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="11">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/ds6.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:red;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;? STONE</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu
+                                </h3>
+                                <p class="card-text">Kỳ 6</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 5%"
+                                         aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;color:red;">CCần được đóng góp thêm tài liệu để mở khóa</span>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!--DS7-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="12">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/ds7.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:red;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;? STONE</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu
+                                </h3>
+                                <p class="card-text">Kỳ 7</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 5%"
+                                         aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;color:red;">Cần được đóng góp thêm tài liệu để mở khóa</span>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!--DS8-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="13">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/ds8.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:red;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;? STONE</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu
+                                </h3>
+                                <p class="card-text">Kỳ 8</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 5%"
+                                         aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;color:red;">Cần được đóng góp thêm tài liệu để mở khóa</span>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!--DS9-->
+                    <div class="card fundraise-item" style="box-shadow: 2px 2px 2px 2px grey">
+                        <form action="/document/group">
+                            <input type="hidden" name="documentGroup" value="14">
+
+                            <img class="card-img-top"
+                                 src="https://github.com/satellite1012/SatelliteWebImage/blob/master/ds9.png?raw=true"
+                                 alt="Image placeholder">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color:red;font-family:arial,serif;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hexagon-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 4.577L8 1v14l6-3.577V4.577zM8.5.134a1 1 0 0 0-1 0l-6 3.577a1 1 0 0 0-.5.866v6.846a1 1 0 0 0 .5.866l6 3.577a1 1 0 0 0 1 0l6-3.577a1 1 0 0 0 .5-.866V4.577a1 1 0 0 0-.5-.866L8.5.134z"></path>
+                                </svg>&nbsp;? STONE</h2>
+                                <h3 class="card-title" style="font-weight: 700;font-family: Arial, Baskerville, monospace">Thư mục tài liệu
+                                </h3>
+                                <p class="card-text">Kỳ 9</p>
+                                <span class="donation-time mb-3 d-block" style="color:green;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707z"></path>
+                                  <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+                                  <path fill-rule="evenodd" d="M8 8.5a.5.5 0 0 1 .5.5v6.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .5-.5z"></path>
+                                </svg>&nbsp;&nbsp;Cập nhật tự động</span>
+                                <div class="progress custom-progress-success">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 5%"
+                                         aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="fund-raised d-block" style="font-family:arial,serif;color:red;">Cần được đóng góp thêm tài liệu để mở khóa</span>
+                            </div>
+
+                        </form>
+                    </div>
+                </th:block>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<hr style="display: block;height: 1px;order: 0;border-top: 4px solid #ccc;margin: 1em 0;padding: 0;"/>
+
+<div class="container">
+    <div class="fb-comments" data-href="https://www.facebook.com/satfomacej/posts/1181478785534332" data-numposts="5" data-width="100%"></div>
+</div>
+
+<th:block th:insert="Common/_js :: content"/>
+<th:block th:insert="Common/footer :: content"/>
+
+<!--Function-->
+<script>
+    function mayBeYouDoNotKnow(){
+        Swal.mixin({
+            confirmButtonText: '<span style="font-family:arial,serif">Tiếp tục &rarr;</span>',
+            showCancelButton: true,
+            progressSteps: ['1', '2','3']
+        }).queue([
+            {
+                html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">Sao không gửi link drive cho nhanh ?</span>'
+                    + '<br><br>'
+                    + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                    + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Có nhiều môn học và nhiều kỳ, nên mình muốn tạo một danh sách tổng hợp trực quan cho các bạn dễ tìm kiếm nhất có thể</p></div>'
+                    + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Mỗi môn học và mỗi kỳ mình sẽ kèm theo những mục tóm tắt và chia sẻ nhỏ để bạn dễ tiếp cận môn học cũng như có kinh nghiệm hơn</p></div>'
+                    + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Dung lượng của toàn bộ tài liệu rất lớn (>60 GB), mình không thể lưu trong một thư mục để đưa link cho các bạn</p></div>'
+                    + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Không gửi link trực tiếp mà lưu vào cơ sở dữ liệu nhằm phục vụ cho mục đích phát triển tính năng thi thử cho các bạn trong năm nay</p></div>'
+                    + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Kiếm ít tiền Adsense để mở event phát thẻ cào</p></div></div>'
+            },
+            {
+                html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">Nguồn gốc tài liệu</span>'
+                    + '<br><br>'
+                    + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                    + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Của mình, anh chị / bạn bè khóa trước</p></div>'
+                    + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">thaycacac.github.io 💖</p></div>'
+                    + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Quizzlet, GitHub, CourseHero, Coursera</p></div>'
+                    + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Một số nguồn khác từ Google</p></div></div>'
+            },
+            {
+                html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">Đóng góp tài liệu</span>'
+                    + '<br><br>'
+                    + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                    + '<div onclick="goto(\'https://docs.google.com/forms/u/6/d/e/1FAIpQLSepOiRp8xAGXkNOOA8gm--qSi6AiXsZC7dmDplAgi7e3ICeDw/viewform\')" class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Đóng góp tại đây</p></div>'
+                    + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Mình chỉ có tài liệu của CNTT, vì ngành khác mình không học nên hi vọng mọi người cùng chung tay ủng hộ</p></div>'
+                    + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Các bạn có thể gửi mọi thứ: Slide, TextBook, Assignment, Link drive, PDF, nhạc, video</p></div>'
+                    + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Mình sẽ ẩn tên các bạn ra khỏi những tài liệu này nếu bạn không thích bị lộ 😁</p></div></div>'
+            },
+
+        ]).then((result) => {
+        })
+    }
+    function showInstructionLogin() {
+        Swal.fire({
+            width: 1000,
+            height: 1000,
+            imageUrl:"Resource/img/Ins/login.gif",
+            videoWidth: 1000,
+            videoHeight: 1000,
+            showCloseButton: true,
+            showCancelButton: false,
+            showConfirmButton: false,
+        })
+    }
+    function showInstructionD1() {
+        Swal.fire({
+            width: 1000,
+            height: 1000,
+            imageUrl:"Resource/img/Ins/document1.gif",
+            videoWidth: 1000,
+            videoHeight: 1000,
+            showCloseButton: true,
+            showCancelButton: false,
+            showConfirmButton: false,
+        })
+    }
+</script>
+
+</body>
+</html>

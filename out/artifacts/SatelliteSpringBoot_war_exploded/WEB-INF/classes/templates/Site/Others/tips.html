@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Satellite | Tips</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Tips cho bạn">
+        <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+        <meta name="author" content="Đoàn Đức Tín">
+        <meta property="og:image" content="https://github.com/satellite1012/SatelliteWebImage/blob/master/profileThub.jpg?raw=true" />
+        <th:block th:insert="Common/_css :: content"/>
+
+        <!--Custom-->
+        <style>
+            .card{
+                height: 200px;
+            }
+        </style>
+    </head>
+    <body>
+
+    <th:block th:insert="Common/header :: content"/>
+    <th:block th:insert="Common/topcontent :: content"/>
+    <br><br>
+
+        <div class="container justify-content-center">
+            <hr><p style="font-family: Arial, Baskerville, monospace">Về nội dung chính</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card border-secondary mb-3" >
+                        <div class="card-header" style="font-family: Arial, Baskerville, monospace">Source Code</div>
+                        <div class="card-body text-secondary">
+                            <h5 class="card-title" style="font-family: Arial, Baskerville, monospace"><b>Vì sao mình không bỏ hết vào một link drive cho nhanh</b></h5>
+                            <p class="card-text" style="font-family: Arial, Baskerville, monospace;">
+                                <span class="btn btn-outline-info" onclick="mayBeYouDoNotKnow1()">XEM MẸO</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card border-secondary mb-3" >
+                        <div class="card-header" style="font-family: Arial, Baskerville, monospace">Quy trình duyệt Blog</div>
+                        <div class="card-body text-secondary">
+                            <h5 class="card-title" style="font-family: Arial, Baskerville, monospace"><b>Điều gì xảy ra khi bạn đăng bài hay sửa bài trên hệ thống</b></h5>
+                            <p class="card-text" style="font-family: Arial, Baskerville, monospace;">
+                                <span class="btn btn-outline-info" onclick="mayBeYouDoNotKnow2()">XEM MẸO</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card border-secondary mb-3" >
+                        <div class="card-header" style="font-family: Arial, Baskerville, monospace">Tài liệu bí mật</div>
+                        <div class="card-body text-secondary">
+                            <h5 class="card-title" style="font-family: Arial, Baskerville, monospace"><b>Các tài liệu này không thường được hiển thị tại trang chủ, làm sao để truy cập ?</b></h5>
+                            <p class="card-text" style="font-family: Arial, Baskerville, monospace;">
+                                <span class="btn btn-outline-info" onclick="mayBeYouDoNotKnow3()">XEM MẸO</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card border-success mb-3" >
+                        <div class="card-header" style="font-family: Arial, Baskerville, monospace">Nguồn gốc tài liệu</div>
+                        <div class="card-body text-success">
+                            <h5 class="card-title" style="font-family: Arial, Baskerville, monospace"><b>Mình sưu tầm tài liệu ở đâu, có đáng tin không</b></h5>
+                            <p class="card-text" style="font-family: Arial, Baskerville, monospace;">
+                                <span class="btn btn-outline-success" onclick="mayBeYouDoNotKnow4()">XEM MẸO</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr><p style="font-family: Arial, Baskerville, monospace">Về phí và lợi nhuận</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card border-danger mb-3" >
+                        <div class="card-header" style="color:red;font-family: Arial, Baskerville, monospace">STONE nhằm mục đích gì</div>
+                        <div class="card-body text-danger">
+                            <h5 class="card-title" style="font-family: Arial, Baskerville, monospace"><b>Tại sao không miễn phí, STONE dùng để làm gì</b></h5>
+                            <p class="card-text" style="font-family: Arial, Baskerville, monospace;">
+                                <span class="btn btn-danger" onclick="mayBeYouDoNotKnow5()">XEM MẸO</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card border-secondary mb-3" >
+                        <div class="card-header" style="font-family: Arial, Baskerville, monospace">Doanh thu</div>
+                        <div class="card-body text-secondary">
+                            <h5 class="card-title" style="font-family: Arial, Baskerville, monospace"><b>Nếu không thu phí, thì doanh thu mình có được để duy trì server nhờ vào đâu?</b></h5>
+                            <p class="card-text" style="font-family: Arial, Baskerville, monospace;">
+                                <span class="btn btn-outline-info" onclick="mayBeYouDoNotKnow6()">XEM MẸO</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr><p style="font-family: Arial, Baskerville, monospace">Về bảo mật</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card border-secondary mb-3" >
+                        <div class="card-header" style="font-family: Arial, Baskerville, monospace">Tùy chọn ẩn danh</div>
+                        <div class="card-body text-secondary">
+                            <h5 class="card-title" style="font-family: Arial, Baskerville, monospace"><b>Cách hoạt động trên các diễn đàn của hệ thống nhưng không muốn lộ tên thật</b></h5>
+                            <p class="card-text" style="font-family: Arial, Baskerville, monospace;">
+                                <span class="btn btn-outline-info" onclick="mayBeYouDoNotKnow7()">XEM MẸO</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card border-danger mb-3" >
+                        <div class="card-header" style="color:red;font-family: Arial, Baskerville, monospace">Thông tin cá nhân</div>
+                        <div class="card-body text-danger">
+                            <h5 class="card-title" style="font-family: Arial, Baskerville, monospace"><b>Người dùng có bị lộ mật khẩu gmail khi đăng ký?</b></h5>
+                            <p class="card-text" style="font-family: Arial, Baskerville, monospace;">
+                                <span class="btn btn-danger" onclick="mayBeYouDoNotKnow8()">Không, xem lý do</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <br><br>
+    <th:block th:insert="Common/_js :: content"/>
+    <th:block th:insert="Common/footer :: content"/>
+
+    <!--Function-->
+    <script>
+        function mayBeYouDoNotKnow1(){
+            Swal.mixin({
+                confirmButtonText: '<span style="font-family:arial,serif">Tiếp tục &rarr;</span>',
+                showCancelButton: true,
+                progressSteps: ['1','2']
+            }).queue([
+                {
+                    html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">Sao không gửi link drive cho nhanh ?</span>'
+                        + '<br><br>'
+                        + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Có nhiều môn học và nhiều kỳ, nên mình muốn tạo một danh sách tổng hợp trực quan cho các bạn dễ tìm kiếm nhất có thể</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Mỗi môn học và mỗi kỳ mình sẽ kèm theo những mục tóm tắt và chia sẻ nhỏ để bạn dễ tiếp cận môn học cũng như có kinh nghiệm hơn</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Dung lượng của toàn bộ tài liệu rất lớn (>60 GB), mình không thể lưu trong một thư mục để đưa link cho các bạn</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Không gửi link trực tiếp mà lưu vào cơ sở dữ liệu nhằm phục vụ cho mục đích phát triển tính năng thi thử cho các bạn trong năm nay</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Kiếm ít tiền Adsense để mở event phát thẻ cào</p></div></div>'
+                },
+                {
+                    html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">Đóng góp tài liệu</span>'
+                        + '<br><br>'
+                        + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                        + '<div onclick="goto(\'https://docs.google.com/forms/u/6/d/e/1FAIpQLSepOiRp8xAGXkNOOA8gm--qSi6AiXsZC7dmDplAgi7e3ICeDw/viewform\')" class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Đóng góp tại đây</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Mình chỉ có tài liệu của CNTT, vì ngành khác mình không học nên hi vọng mọi người cùng chung tay ủng hộ</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Các bạn có thể gửi mọi thứ: Slide, TextBook, Assignment, Link drive, PDF, nhạc, video</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Mình sẽ ẩn tên các bạn ra khỏi những tài liệu này nếu bạn không thích bị lộ 😁</p></div></div>'
+                },
+
+            ]).then((result) => {
+            })
+        }
+        function mayBeYouDoNotKnow2(){
+            Swal.mixin({
+                confirmButtonText: '<span style="font-family:arial,serif">Tiếp tục &rarr;</span>',
+                showCancelButton: true,
+                progressSteps: ['1', '2','3','4']
+            }).queue([
+                {
+                    html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">Kiểm duyệt nội dung</span>'
+                        + '<br><br>'
+                        + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Mất khoảng 1 đến 2 ngày</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Hệ thống tự động gắn keywords</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Sắp xếp đề tài cho bài viết và sau đó đăng bài, tạo chủ đề mới trên trang chủ nếu cần thiết</p></div></div>'
+                },
+                {
+                    html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">Quyền tác giả</span>'
+                        + '<br><br>'
+                        + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Đăng ẩn danh -> tự động đưa vào hàng chờ duyệt</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Đăng nháp -> đưa vào danh sách nháp</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Người kiểm duyệt sẽ xem ghi chú của các bạn để có điều chỉnh phù hợp</p></div></div>'
+                },                {
+                    html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">Chỉnh sửa bài viết</span>'
+                        + '<br><br>'
+                        + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Nhằm tránh chỉnh sửa những nội dung được kiểm duyệt, quy trình của hệ thống có phần phức tạp</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Bắt buộc tạo định danh khác cho bài viết</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Lưu bài viết đã chỉnh sửa dưới dạng bài viết mới mang định danh mới</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Bài mới sẽ được xử lí như mục [1], bài viết cũ không bị ảnh hưởng</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Nếu đủ điều kiện, toàn bộ view và rate của bài cũ sẽ được chuyển sang bài mới</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Ngưng kích hoạt bài cũ, đăng bài mới</p></div></div>'
+                },
+                {
+                    html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">Bài viết vi phạm</span>'
+                        + '<br><br><span style="font-family:arial,serif">Mọi trường hợp phát hiện vi phạm, hãy liên hệ ngay cho chúng tôi tại các mục liên hệ trên website</span>'
+                }
+
+            ]).then((result) => {
+            })
+        }
+        function mayBeYouDoNotKnow3(){
+            Swal.mixin({
+                confirmButtonText: '<span style="font-family:arial,serif">Tiếp tục &rarr;</span>',
+                showCancelButton: true,
+                progressSteps: ['1', '2']
+            }).queue([
+                {
+                    html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">Cách truy cập</span>'
+                        + '<br><br>'
+                        + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Đăng nhập vào tài khoản của bạn</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Tại thanh điều hướng bên trái, tìm đến mục \'TÀI LIỆU BÍ MẬT\'</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Nhập mã bí mật (cách lấy ở phần sau)</p></div></div>'
+                },
+                {
+                    html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">Mã tài liệu</span>'
+                        + '<br><br>'
+                        + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Mỗi mã sẽ truy cập tới được 1 hoặc nhiều thư mục tài liệu khác nhau</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Các bạn có thể lấy thông qua bạn bè, mod, facebook page hoặc thông qua các sự kiện </p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Mã chỉ sử dụng được trong thời gian giới hạn, số lần nhất định và phải bắt buộc được điền như bước 1, nếu các bạn copy link tài liệu bí mật và share cho bạn bè khác, họ sẽ vào không được</p></div></div>'
+                }
+            ]).then((result) => {
+            })
+        }
+        function mayBeYouDoNotKnow4(){
+            Swal.mixin({
+                confirmButtonText: '<span style="font-family:arial,serif">Tiếp tục &rarr;</span>',
+                showCancelButton: true,
+                progressSteps: ['1', '2']
+            }).queue([
+                {
+                    html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">Nguồn gốc tài liệu</span>'
+                        + '<br><br>'
+                        + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Của mình, anh chị / bạn bè khóa trước</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">thaycacac.github.io 💖</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Quizzlet, GitHub, CourseHero, Coursera</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Một số nguồn khác từ Google</p></div></div>'
+                },
+                {
+                    html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">Đóng góp tài liệu</span>'
+                        + '<br><br>'
+                        + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                        + '<div onclick="goto(\'https://docs.google.com/forms/u/6/d/e/1FAIpQLSepOiRp8xAGXkNOOA8gm--qSi6AiXsZC7dmDplAgi7e3ICeDw/viewform\')" class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Đóng góp tại đây</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Mình chỉ có tài liệu của CNTT, vì ngành khác mình không học nên hi vọng mọi người cùng chung tay ủng hộ</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Các bạn có thể gửi mọi thứ: Slide, TextBook, Assignment, Link drive, PDF, nhạc, video</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Mình sẽ ẩn tên các bạn ra khỏi những tài liệu này nếu bạn không thích bị lộ 😁</p></div></div>'
+                }
+            ]).then((result) => {
+            })
+        }
+        function mayBeYouDoNotKnow5(){
+            Swal.mixin({
+                confirmButtonText: '<span style="font-family:arial,serif">Tiếp tục &rarr;</span>',
+                showCancelButton: true,
+                progressSteps: ['1', '2']
+            }).queue([
+                {
+                    html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">STONE dùng để làm gì</span>'
+                        + '<br><br>'
+                        + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Cho vui</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Tránh spam</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Mua product tại trang \'PRODUCT\'</p></div></div>'
+                },
+                {
+                    html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">Các cách để kiếm thêm STONE</span>'
+                        + '<br><br>'
+                        + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Stone tự động tăng ngẫu nhiên nếu hệ thống nhân thấy bạn đã dùng gần hết</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Share page, hoạt động tích cực trên website thông qua các diễn đàn tại mục \'QAFPT\'</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Đóng góp tài liệu</p></div></div>'
+                }
+            ]).then((result) => {
+            })
+        }
+        function mayBeYouDoNotKnow6(){
+            Swal.mixin({
+                confirmButtonText: '<span style="font-family:arial,serif">Tiếp tục &rarr;</span>',
+                showCancelButton: true,
+                progressSteps: ['1']
+            }).queue([
+                {
+                    html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">AdSense</span>'
+                        + '<br><br>'
+                        + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Quảng cáo của google</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Nhưng để tăng trải nghiệm website, mình quyết định không chèn tất cả nội dung quảng cáo vào site</p></div>'
+                }
+            ]).then((result) => {
+            })
+        }
+        function mayBeYouDoNotKnow7(){
+            Swal.mixin({
+                confirmButtonText: '<span style="font-family:arial,serif">Tiếp tục &rarr;</span>',
+                showCancelButton: true,
+                progressSteps: ['1']
+            }).queue([
+                {
+                    html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">Tài khoản KHÁCH</span>'
+                        + '<br><br>'
+                        + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Không hiển thị tên thật của bạn, đảm bảo an toàn</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Dùng để bình luận ẩn danh, đăng blog và đặt câu hỏi ẩn danh</p></div></div>'
+                }
+            ]).then((result) => {
+            })
+        }
+        function mayBeYouDoNotKnow8(){
+            Swal.mixin({
+                confirmButtonText: '<span style="font-family:arial,serif">Tiếp tục &rarr;</span>',
+                showCancelButton: true,
+                progressSteps: ['1', '2']
+            }).queue([
+                {
+                    html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">Mật khẩu GMAIL</span>'
+                        + '<br><br>'
+                        + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Mình không và không thể lấy được mật khẩu gmail của các bạn khi bạn đăng nhập/đăng ký tại website</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Mọi thao tác đăng nhập được thực hiện bởi Google, hệ thống của mình chỉ nhận được các thông tin được Google trả về như: Trạng thái đăng nhập, Email, Họ tên và Avatar</p></div></div>'
+                },
+                {
+                    html: '<span style="font-weight:700;font-size:30px;font-family:arial,serif">Thông tin cá nhân</span>'
+                        + '<br><br>'
+                        + '<div style="overflow-y: scroll;display: block;height: 300px;text-align: left;">'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Các thông tin công khai trên website khi bạn đăng nhập bao gồm: Email, Họ và Tên, Avatar của Google</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Bạn có thể sửa họ tên và avatar của mình nếu bạn không muốn người dùng khác trên hệ thống biết</p></div>'
+                        + '<div class="card"><p class="card-body" style="font-family: Arial, Baskerville, monospace">Thông tin khác sẽ do chính bạn quyết định nên điền vào hay không</p></div></div>'
+                }
+            ]).then((result) => {
+            })
+        }
+    </script>
+
+</body>
+</html>

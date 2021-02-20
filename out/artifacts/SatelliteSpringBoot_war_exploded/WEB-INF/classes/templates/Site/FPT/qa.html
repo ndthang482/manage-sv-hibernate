@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Satellite | Q&A FPT</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="title" content="FPT Ask and Answer Forum">
+    <meta name="description"
+          content="Nơi dành cho các bạn sinh viên đặt những câu hỏi, những câu trả lời được đưa ra nhằm giúp các bạn tiếp cận với môi trường học tập nhanh hơn">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Đoàn Đức Tín">
+    <th:block th:insert="Common/_css :: content"/>
+
+    <!--Custom-->
+    <link rel="stylesheet" th:href="@{/Resource/blogsite/style.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <style>
+        .search {
+            border: 2px solid darkorange;
+            overflow: auto;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+        }
+
+        .search input[type="text"] {
+            border: 0;
+            width: 67%;
+            padding: 10px 10px;
+        }
+
+        .search input[type="text"]:focus {
+            outline: 0;
+        }
+
+        .search input[type="submit"] {
+            border: 0;
+            background: none;
+            background-color: darkorange;
+            color: #fff;
+            float: right;
+            padding: 10px;
+            border-radius-top-right: 5px;
+            -moz-border-radius-top-right: 5px;
+            -webkit-border-radius-top-right: 5px;
+            border-radius-bottom-right: 5px;
+            -moz-border-radius-bottom-right: 5px;
+            -webkit-border-radius-bottom-right: 5px;
+            cursor: pointer;
+        }
+
+        @media only screen and (min-width: 150px) and (max-width: 780px) { {
+        }
+            .search {
+                width: 95%;
+                margin: 0 auto;
+            }
+
+        }
+
+        .no-box-shadow {
+            box-shadow: none
+        }
+
+        .no-box-shadow:focus {
+            box-shadow: none
+        }
+
+        .day {
+            font-size: 15px
+        }
+
+        .heart {
+            border-radius: 22px
+        }
+
+        .heart-icon {
+            color: orange;
+        }
+
+        .comment-text {
+            font-size: 18px
+        }
+
+        .delete {
+            font-size: 13px;
+            cursor: pointer
+        }
+
+        .ck-editor {
+            width: 100% !important;
+        }
+        .ftco-navbar-light{
+            position: absolute;
+            background-color: transparent !important;
+        }
+        .fa-angle-left{
+            margin-left: 12px;
+            padding: 0;
+            text-align: left;
+        }
+        .fa-angle-right{
+            margin-left: 12px;
+            padding: 0;
+            text-align: left;
+        }
+        .fa-angle-up{
+            padding: 0;
+            margin: 0;
+        }
+        .scrollable-menu {
+            height: auto;
+            max-height: 300px;
+            overflow-x: hidden;
+        }
+
+        .myflash{
+            -webkit-animation: glowing 1500ms infinite;
+            -moz-animation: glowing 1500ms infinite;
+            -o-animation: glowing 1500ms infinite;
+        }
+
+        @-webkit-keyframes glowing {
+            0% { background-color: #b20000; -webkit-box-shadow: 0 0 3px #b20000; }
+            50% { background-color: #FF0000; -webkit-box-shadow: 0 0 40px #FF0000; }
+            100% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+        }
+
+        @-moz-keyframes glowing {
+            0% { background-color: #b20000; -moz-box-shadow: 0 0 3px #b20000; }
+            50% { background-color: #FF0000; -moz-box-shadow: 0 0 40px #FF0000; }
+            100% { background-color: #B20000; -moz-box-shadow: 0 0 3px #B20000; }
+        }
+
+        @-o-keyframes glowing {
+            0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+            50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
+            100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+        }
+
+        @keyframes glowing {
+            0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+            50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
+            100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+        }
+
+        .container-fluid{
+            padding: 0 60px;
+        }
+        @media (max-width: 700px) {
+            .container-fluid{
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<th:block th:insert="Common/header :: content"/>
+<th:block th:insert="Common/topcontent :: content"/>
+
+<div class="main-content-wrapper" style="padding-top: 30px">
+    <div class="container-fluid">
+
+        <div class="row justify-content-center">
+
+            <!--CONTENT VIEW-->
+            <div class="col-12 col-lg-9">
+                <div class="single-blog-content mb-100" >
+                    <div class="title">
+                        <h5 style="font-weight: 700;font-family: Dosis, serif">Câu hỏi mới đăng</h5>
+                    </div>
+                    <div class="post-content" style="overflow-x: scroll;overflow-y: scroll;height: 600px">
+                        <table id="qa-table" >
+                            <thead><tr>
+                                <th>&nbsp;</th>
+                            </tr></thead>
+                            <tbody>
+                            <th:block th:each="i: ${QaFPTList}">
+                                <th:block th:if="${i.getUserByUser().getuRole() != 3}">
+                                    <tr>
+                                        <td>
+                                            <div th:onclick="goto('/qaFPT/view?id=[[${i.id}]]')" class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig"
+                                                 data-wow-delay="0s">
+
+                                                <div class="post-thumbnail">
+                                                    <img th:src="${i.image}" alt="" style="max-height:150px;height: 100%;width: 100%">
+                                                </div>
+
+                                                <div onmouseenter="this.style.boxShadow='0 1px 5px rgba(0, 0, 0, .6)'"
+                                                     onmouseleave="this.style.boxShadow='0 1px 5px rgba(0, 0, 0, .15)'"
+                                                     class="post-content" style="width: 100%">
+                                                    <a th:href="'/qaFPT/view?id='+${i.id}" class="headline">
+                                                        <h5 style="font-family:'Work Sans','sans-serif'">[(${i.title})]</h5>
+                                                    </a>
+                                                    <p style="overflow-y:scroll;height: 100px">[(${i.content})]</p>
+
+                                                    <div class="post-meta">
+                                                        <p><a th:href="'/profile/'+${i.userByUser.uName}" class="post-author">[(${i.userByUser.uName})]</a> vào <a href="#" class="post-date">[(${i.datecreated})]</a></p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </th:block>
+                                <th:block th:if="${i.getUserByUser().getuRole() == 3}">
+                                    <tr>
+                                        <td>
+                                            <div th:onclick="goto('/qaFPT/view?id=[[${i.id}]]')" class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig"
+                                                 data-wow-delay="0s">
+
+                                                <div class="post-thumbnail">
+                                                    <img th:src="${i.image}" alt="" style="max-height:150px;height: 100%;width: 100%">
+                                                </div>
+
+                                                <div onmouseenter="this.style.boxShadow='0 1px 5px rgba(0, 0, 0, .6)'"
+                                                     onmouseleave="this.style.boxShadow='0 1px 5px rgba(0, 0, 0, .15)'"
+                                                     class="post-content" style="width: 100%">
+                                                    <a th:href="'/qaFPT/view?id='+${i.id}" class="headline">
+                                                        <h5 style="font-family:'Work Sans','sans-serif'">[(${i.title})]</h5>
+                                                    </a>
+                                                    <p style="overflow-y:scroll;height: 100px">[(${i.content})]</p>
+
+                                                    <div class="post-meta">
+                                                        <p><a href="#" class="post-author">Người ẩn danh</a> vào <a href="#" class="post-date">[(${i.datecreated})]</a></p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </th:block>
+                            </th:block>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!--ASIDE-->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="post-sidebar-area mb-100">
+
+                    <!--FUNCTION-->
+                    <div class="sidebar-widget-area">
+                        <h5 class="title">Thao tác</h5>
+                        <div class="widget-content" style="width: 100%">
+                            <th:block th:if="${session.user != null}">
+                                <a onclick="addQA()"><button class="btn btn-success" style="border:0;background: linear-gradient(to right, #f12711, #f5af19);font-size: 12px;font-weight: 700;margin-bottom: 3px">Đặt câu hỏi</button></a>
+                            </th:block>
+                            <th:block th:if="${session.user == null}">
+                                <a onclick="addQAGuest()"><button class="btn btn-success" style="border:0;background: linear-gradient(to right, #f12711, #f5af19);font-size: 12px;font-weight: 700;margin-bottom: 3px">Đặt câu hỏi</button></a>
+                            </th:block>
+                        </div>
+                    </div>
+
+                    <!--INTRODUTION-->
+                    <div class="sidebar-widget-area">
+                        <h5 class="title">Hướng dẫn</h5>
+                        <div class="widget-content" style="width: 100%">
+                            <li>0.&nbsp;Bạn có thể tìm những FAQ tại thanh tìm kiếm bên cạnh</li>
+                            <li>1.&nbsp;Gửi thắc mắc của bạn, nếu chưa đăng nhập thì bạn sẽ được hỏi ẩn danh</li>
+                            <li>2.&nbsp;Chờ câu hỏi đươc duyệt (spam, từ ngữ thô tục, đả kích cá nhân tập thể, ...)</li>
+                            <li>3.&nbsp;Câu hỏi được đăng lên diễn đàn, mọi người có thể vào thảo luận</li>
+                            <hr>
+                            <p style="color: grey;font-weight: 600"><i>(*1) Câu hỏi mới nhất được ưu tiên xếp lên đầu trang</i></p>
+                            <p style="color: grey;font-weight: 600"><i>(*2) Nếu bạn muốn tham gia diễn đàn nhưng ko muốn tên mình bị lộ, bạn có thể đăng xuất, sau đó bắt đầu hỏi/đáp</i></p>
+                            <p style="color: grey;font-weight: 600"><i>(*3) Nếu thời gian quá lâu nhưng câu hỏi vẫn chưa được đăng, bạn có thể liên hệ với page ở nút bên phải dưới màn hình </i></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<th:block th:insert="Common/_js :: content"/>
+<th:block th:insert="Common/footer :: content"/>
+
+<!--Custom-->
+<script th:src="@{/Resource/friendlydate/moment.js}"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+<!--Function-->
+<script>
+    document.querySelectorAll('.post-date').forEach((el)=>{
+        el.innerText=moment(el.innerText,"YYYY-MM-DD hh:mm:ss").fromNow()
+    });
+    function goto(x){
+        window.location=x;
+    }
+    function previewFile() {
+        const preview = document.getElementById("preview-avatar");
+        const file = document.getElementById("imgFile").files[0];
+        const reader1 = new FileReader();
+        reader1.addEventListener("load", function () {
+            preview.src = reader1.result;
+        }, false);
+
+        if (file) {
+            reader1.readAsDataURL(file);
+        }
+    }
+
+    function addQAGuest() {
+        Swal.fire({
+            width: 1100,
+            title: '<span style="color:orangered;"><strong>Gửi câu hỏi với tên </strong>Anonymous</span><br>',
+            icon: 'info',
+            html: '<form onsubmit="return false" id="form-upload-qa" method="post" enctype="multipart/form-data">\n' +
+                '<div class="container">' +
+                '<div class="row">' +
+                '<div class="col-8">' +
+                '<h4 style="font-family: Arial, Baskerville, monospace;font-weight: 600">Tiêu đề câu hỏi (ngắn gọn, thu hút)</h4>&nbsp;<input style="width: 80%" name="qa_title" type="text" required><br>' +
+                '<hr>' +
+                '<h4 style="font-family: Arial, Baskerville, monospace;font-weight: 600">Chi tiết câu hỏi</h4>&nbsp;<br><textarea style="width: 90%;height: 150px" name="qa_des" type="text" required></textarea><br>' +
+                '<hr>' +
+                '</div>' +
+                '<div class="col-4">' +
+                '<img id="preview-avatar" class="header-image"' +
+                'src="https://cdn.iconscout.com/icon/free/png-256/gallery-image-picture-landscape-potrait-album-wallpaper-4-2914.png"' +
+                'style="max-width: 200px;max-height: 200px">' +
+                '<input onchange="previewFile()" id="imgFile" name="fileUpload" type="file" ' +
+                'style="overflow:auto;background-color:#007bff;display: inline-block;max-width: 200px;padding: 5px 9px 5px 9px;border-radius:8px;font-size: 20px;margin:20px;color:white"' +
+                'required>' +
+                '</div>' +
+                '</div>' +
+                '<button id="btn-form-upload-qa" class="btn-success" style="padding:15px;border-radius:7px;font-family: Arial, Baskerville, monospace;color:white" onclick="uploadQAFPTAPI()" >I want to post this question</button>' +
+                '</div>' +
+                '</form>',
+            showCloseButton: true,
+            showCancelButton: true,
+            showConfirmButton: false,
+            focusConfirm: false,
+            cancelButtonText:
+                'Hủy bỏ',
+            cancelButtonAriaLabel: 'Thumbs down'
+        });
+    }
+
+    function addQA() {
+        Swal.fire({
+            width: 1100,
+            title: '<span style="color:orangered;"><strong>Gửi câu hỏi với tên </strong>${sessionScope.user.uDigitalName}</span><br>',
+            icon: 'info',
+            html: '<form onsubmit="return false" id="form-upload-qa" method="post" enctype="multipart/form-data">\n' +
+                '<div class="container">' +
+                '<div class="row">' +
+                '<div class="col-8">' +
+                '<h4 style="font-family: Arial, Baskerville, monospace;font-weight: 600">Tiêu đề câu hỏi (ngắn gọn, thu hút)</h4>&nbsp;<input style="width: 80%" name="qa_title" type="text" required><br>' +
+                '<hr>' +
+                '<h4 style="font-family: Arial, Baskerville, monospace;font-weight: 600">Chi tiết câu hỏi</h4>&nbsp;<br><textarea style="width: 90%;height: 150px" name="qa_des" type="text" required></textarea><br>' +
+                '<hr>' +
+                '</div>' +
+                '<div class="col-4">' +
+                '<img id="preview-avatar" class="header-image"' +
+                'src="https://cdn.iconscout.com/icon/free/png-256/gallery-image-picture-landscape-potrait-album-wallpaper-4-2914.png"' +
+                'style="max-width: 200px;max-height: 200px">' +
+                '<input onchange="previewFile()" id="imgFile" name="fileUpload" type="file" ' +
+                'style="overflow:auto;background-color:#007bff;display: inline-block;max-width: 200px;padding: 5px 9px 5px 9px;border-radius:8px;font-size: 20px;margin:20px;color:white"' +
+                'required>' +
+                '</div>' +
+                '</div>' +
+                '<button id="btn-form-upload-qa" class="btn-success" style="padding:15px;border-radius:7px;font-family: Arial, Baskerville, monospace;color:white" onclick="uploadQAFPTAPI()" >I want to post this question</button>' +
+                '</div>' +
+                '</form>',
+            showCloseButton: true,
+            showCancelButton: true,
+            showConfirmButton: false,
+            focusConfirm: false,
+            cancelButtonText:
+                'Hủy bỏ',
+            cancelButtonAriaLabel: 'Thumbs down'
+        });
+    }
+</script>
+
+<!--AJAX-->
+<script>
+    function uploadQAFPTAPI(){
+        document.getElementById("btn-form-upload-qa").onclick='';
+        document.getElementById("btn-form-upload-qa").innerHTML='<i class="fa fa-circle-o-notch fa-spin" style="padding: 0;margin: 0"></i>'
+        var formData = new FormData(document.getElementById("form-upload-qa"));
+        $.ajax({
+            url: '/qaFPT/add/qa',
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false
+        }).done(function (result) {
+            if (result.toString().substring(0, 7) === "//ERROR") {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: result.toString().substring(7),
+                    showConfirmButton: false,
+                    timer: 4000
+                })
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: "Thành công, câu hỏi của bạn sẽ hiện lên trang chủ sau khi được duyệt",
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+        });
+    }
+</script>
+
+<!--Init-->
+<script>
+    $(document).ready( function () {
+        $('#qa-table').DataTable({ "order": []});
+    } );
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-23581568-13');
+    document.getElementById('drop-fpt-all').addEventListener('click',()=>{
+        x=document.getElementById('header-dropdown-menu');
+        y=document.getElementById('header-dropdown-content');
+        if (x.classList.contains('show')){
+            x.classList.remove('show');
+            y.classList.remove('show');
+        }else{
+            x.classList.add('show');
+            y.classList.add('show');
+        }
+    })
+    x=document.getElementById('drop-btn-login');
+    if (x!==null) x.addEventListener('click',()=>{
+        if (document.getElementById('drop-menu-login').classList.contains('show')){
+            document.getElementById('drop-menu-login').classList.remove('show');
+        }else{
+            document.getElementById('drop-menu-login').classList.add('show');
+        }
+    })
+    document.querySelector('.owl-stage-outer').style.height='260px';
+    document.getElementById('scrollUp').style.left='30px';
+</script>
+
+</body>
+</html>

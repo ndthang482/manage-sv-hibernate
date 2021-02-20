@@ -1,0 +1,15 @@
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<p style="font-family: Arial, Baskerville, monospace;color: wheat;margin-top:12px"> Chỉ hiện kết quả tốt nhất</p>
+<th:block th:each="i : ${UserSearchedList}">
+    <a th:href="@{'/profile/'+${i.uName}}">
+    <span style="border: 2px solid grey;margin: 8px 30px 8px 30px;border-radius: 8px; padding: 15px;">
+        <h2 style="font-size:15px;display: inline-block;font-weight: 700;color: cyan">
+                [(${i.uName})]&nbsp;&nbsp;
+            <span style="font-size:15px;padding:10px;color:darkorange;font-family:Arial, Baskerville, monospace;font-weight: 700">
+                    [(${i.uDigitalName})]
+            </span>
+        </h2>
+        <h5 style="font-size:12px;color: lightgray"><i>[(${i.uEmail})]</i></h5>
+    </span>
+    </a>
+</th:block>

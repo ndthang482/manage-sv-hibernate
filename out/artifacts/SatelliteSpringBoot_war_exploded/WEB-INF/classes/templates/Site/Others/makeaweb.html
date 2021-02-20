@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Troll | WebsiteBuilder</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Tạo web trong nháy mắt chỉ với kéo thả ?">
+        <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+        <meta name="author" content="Đoàn Đức Tín">
+        <meta property="og:image" content="https://github.com/satellite1012/SatelliteWebImage/blob/master/profileThub.jpg?raw=true" />
+        <th:block th:insert="Common/_css :: content"/>
+
+        <!--Custom-->
+        <style>
+            .troll-content{
+                background-color: wheat;
+                color:black;
+                border-radius: 3px;
+                border: 3px solid black;
+                font-weight: 700;
+                padding: 25px;
+                touch-action: none;
+                user-select: none;
+            }
+        </style>
+
+    </head>
+    <body>
+
+    <th:block th:insert="Common/header :: content"/>
+    <th:block th:insert="Common/topcontent :: content"/>
+    <br><br>
+
+        <div class="container-fluid">
+            <h2 style="text-align: center;font-weight: 700">Bạn muốn web mới của bạn có những gì ??</h2><br>
+            <div class="row justify-content-center">
+                <div class="btn-group ">
+                    <div id="btn-strut2" class="draggable btn btn-outline-primary">Strut 2</div>
+                    <div id="btn-springboot" class="draggable btn btn-outline-primary">Spring Boot</div>
+                    <div id="btn-hibernate" class="draggable btn btn-outline-primary">Hibernate</div>
+                    <div id="btn-maven" class="draggable btn btn-outline-primary">Maven</div>
+                    <div id="btn-mysql" class="draggable btn btn-outline-primary">MySQL</div>
+                    <div id="btn-domainssl" class="draggable btn btn-outline-primary">Domain SSL</div>
+                    <button onclick="checkout()" class="btn btn-success" style="margin-left: 30px">CHECK OUT</button>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div id="big-troll-container" class="container" style="height: 800px;border: 2px solid orange;border-radius: 3px">
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+    <th:block th:insert="Common/_js :: content"/>
+    <th:block th:insert="Common/footer :: content"/>
+
+    <!--Function-->
+    <script>
+        function checkout(){
+            x=document.getElementById('big-troll-container')
+            if (x.childElementCount===0){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Lỗi xảy ra',
+                    text: 'Bạn chưa chọn công nghệ nào'
+                })
+            }else{
+                let timerInterval
+                Swal.fire({
+                    title: 'Đang xử lí dữ liệu, đợi tí nhé',
+                    showConfirmButton:false,
+                    allowOutsideClick:false,
+                    allowClickOutside:false,
+                    html: 'Đang khởi tạo link website',
+                    timer: 4000,
+                    timerProgressBar: true,
+                    willOpen: () => {
+                        Swal.showLoading()
+
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    Swal.fire({
+                        title: 'Thành công',
+                        html: 'Website của bạn đã khả dụng tại: <a href="https://quizletlearn.000webhostapp.com/" target="_blank">newsite.satdevelop.com</a> '
+                    })
+                })
+            }
+        }
+        function addToContainer(id,x,y,text){
+            //Content
+            var troll_btn = document.createElement("button");
+            troll_btn.className = "troll-content";
+            troll_btn.id = "troll-content";
+            troll_btn.innerText = text;
+            troll_btn.addEventListener('mouseover',() => changeActive(troll_btn))
+
+            document.getElementById(id).appendChild(troll_btn);
+        }
+        document.getElementById("btn-strut2").addEventListener('click', () => addToContainer('big-troll-container',100,100,'Struct2'));
+        document.getElementById("btn-springboot").addEventListener('click', () => addToContainer('big-troll-container',100,100,'BOOT'));
+        document.getElementById("btn-hibernate").addEventListener('click', () => addToContainer('big-troll-container',100,100,'HIBERNATE'));
+        document.getElementById("btn-maven").addEventListener('click', () => addToContainer('big-troll-container',100,100,'MAVÈN'));
+        document.getElementById("btn-mysql").addEventListener('click', () => addToContainer('big-troll-container',100,100,'MYSQL'));
+        document.getElementById("btn-domainssl").addEventListener('click', () => addToContainer('big-troll-container',100,100,'SSL'));
+    </script>
+
+    <!--Animate-->
+    <script>
+        var dragItem = document.querySelector("#troll-content");
+        var container = document.querySelector("#big-troll-container");
+
+        var active = false;
+        var currentX;
+        var currentY;
+        var initialX;
+        var initialY;
+        var xOffset = 0;
+        var yOffset = 0;
+
+        container.addEventListener("touchstart", dragStart, false);
+        container.addEventListener("touchend", dragEnd, false);
+        container.addEventListener("touchmove", drag, false);
+
+        container.addEventListener("mousedown", dragStart, false);
+        container.addEventListener("mouseup", dragEnd, false);
+        container.addEventListener("mousemove", drag, false);
+
+        function changeActive(x){
+            dragItem= x;
+            console.log(dragItem)
+        }
+
+        function dragStart(e) {
+            if (e.type === "touchstart") {
+                initialX = e.touches[0].clientX - xOffset;
+                initialY = e.touches[0].clientY - yOffset;
+            } else {
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+            }
+console.log(dragItem)
+            console.log(container)
+            if (e.target === dragItem) {
+                active = true;
+            }
+        }
+
+        function dragEnd(e) {
+            initialX = currentX;
+            initialY = currentY;
+
+            active = false;
+        }
+
+        function drag(e) {
+            if (active) {
+                e.preventDefault();
+
+                if (e.type === "touchmove") {
+                    console.log("cc3")
+                    currentX = e.touches[0].clientX - initialX;
+                    currentY = e.touches[0].clientY - initialY;
+                } else {
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+                }
+
+                xOffset = currentX;
+                yOffset = currentY;
+
+                setTranslate(currentX, currentY, dragItem);
+            }
+        }
+
+        function setTranslate(xPos, yPos, el) {
+
+            el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+        }
+    </script>
+
+</body>
+</html>

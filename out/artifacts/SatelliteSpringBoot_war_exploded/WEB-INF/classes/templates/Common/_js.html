@@ -1,0 +1,157 @@
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+
+<!-- =========== JAVASCRIPTS ============ -->
+<th:block th:fragment="content">
+    <!--TEMPLATE-->
+    <script th:src="@{/Resource/js/jquery.min.js}"></script>
+    <script th:src="@{/Resource/js/jquery-migrate-3.0.1.min.js}"></script>
+    <script th:src="@{/Resource/js/popper.min.js}"></script>
+    <script th:src="@{/Resource/js/bootstrap.min.js}"></script>
+    <script th:src="@{/Resource/js/jquery.easing.1.3.js}"></script>
+    <script th:src="@{/Resource/js/jquery.waypoints.min.js}"></script>
+    <script th:src="@{/Resource/js/jquery.stellar.min.js}"></script>
+    <script th:src="@{/Resource/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/Resource/js/jquery.magnific-popup.min.js}"></script>
+    <script th:src="@{/Resource/js/bootstrap-datepicker.js}"></script>
+    <script th:src="@{/Resource/js/jquery.fancybox.min.js}"></script>
+    <script th:src="@{/Resource/js/aos.js}"></script>
+    <script th:src="@{/Resource/js/jquery.animateNumber.min.js}"></script>
+    <script th:src="@{/Resource/js/main.js}"></script>
+
+    <!--DISABLE KEY
+    <script>
+    document.onkeydown = function(e) {
+    if(event.keyCode === 123) {
+    return false;
+    }
+    if(e.ctrlKey && e.keyCode === 'E'.charCodeAt(0)){
+    return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode === 'I'.charCodeAt(0)){
+    return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode === 'J'.charCodeAt(0)){
+    return false;
+    }
+    if(e.ctrlKey && e.keyCode === 'U'.charCodeAt(0)){
+    return false;
+    }
+    if(e.ctrlKey && e.keyCode === 'S'.charCodeAt(0)){
+    return false;
+    }
+    if(e.ctrlKey && e.keyCode === 'H'.charCodeAt(0)){
+    return false;
+    }
+    if(e.ctrlKey && e.keyCode === 'A'.charCodeAt(0)){
+    return false;
+    }
+    if(e.ctrlKey && e.keyCode === 'F'.charCodeAt(0)){
+    return false;
+    }
+    if(e.ctrlKey && e.keyCode === 'E'.charCodeAt(0)){
+    return false;
+    }
+    };
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+    -->
+
+    <!--ALERT-->
+    <script th:src="@{/Resource/external/sweetaleart.js}"></script>
+    <script th:src="@{/Resource/external/sweetaleart2.js}"></script>
+
+    <!--ICON-->
+    <script th:src="@{/Resource/external/fontawesome.js}" crossorigin="anonymous"></script>
+
+    <!--Loader-->
+    <script>
+        function LoadCircle(){
+            document.getElementsByClassName("ftco-loader").style.display="none";
+        }
+    </script>
+
+    <!--Log-->
+    <script>
+        function ShowLog_Product(){
+                Swal.fire({
+                    width: 800,
+                    html: '<li >Toàn bộ product trong này là do bọn mình làm 100%</li><br>' +
+                        '<li >Tên tác giả cho từng sản phẩm được hiển thị ở dưới cùng</li>'+
+                        '<li >Phần mềm là miễn phí, vì vậy các bạn không nên đổi tên tác giả trong code </li>',
+                    title: '<h2 style="color:orangered">Xin các bạn hãy dành thời gian đọc cái này</h2>',
+                    imageUrl: 'https://www.lazyengineers.com/wp-content/uploads/2016/02/free1.jpg',
+                    imageWidth: 600,
+                    imageHeight: 400,
+                    imageAlt: 'Custom image'
+                })
+        }
+        function ShowIns_Link(){
+            Swal.fire({
+                width: 800,
+                html: 'Một số tài liệu đã được chuyển thành link rút gọn nhằm thêm kinh phí quảng cáo duy trì website, đây là cách truy cập cho những bạn không biết',
+                title: 'CHÚ Ý',
+                imageUrl:"Resource/img/Ins/linkrutgon.gif",
+                videoWidth: 1000,
+                videoHeight: 1000,
+            })
+        }
+        function ShowLog_Home(){
+            Swal.fire({
+                width: 800,
+                html: 'Bạn ơi, hãy đeo khẩu trang khi ra đường nhé!',
+                title: 'Dịch COVID-19 đang diễn biến phức tạp',
+                imageUrl: 'https://image.viettimes.vn/w800/Uploaded/2020/livospwi/2020_05_07/2-4018582_752020.jpg',
+                imageWidth: 700,
+                imageHeight: 500,
+                imageAlt: 'Custom image'
+            })
+        }
+        function ShowLog_Document(){
+            Swal.fire({
+                title: 'Cảnh báo',
+                width: 700,
+                html: "<div style=\"font-family:Arial, Baskerville, monospace;overflow-y: scroll;display: block;height: 400px;text-align: left;\"><span style=\"color:orangered;font-size: 20px;font-weight: 600\">Tài liệu được lấy từ đâu ?</span><br>" +
+                    "<br><li> Bài tập của các bạn sinh viên share cho admin</li>" +
+                    "<li> Slide liên quan phục vụ cho việc học</li>" +
+                    "<li> Bài tập trên các trang lớn như Sanfoundry, Quizzlet, CourseHero, ...</li>" +
+                    "<li> Đề thi tổng hợp từ các trang thông qua việc search keyword trên google</li><hr>" +
+                    "<span style=\"font-family:Arial, Baskerville, monospace;color:orangered;font-size: 20px;font-weight: 600\">Bạn nên làm gì</span><br>" +
+                    "<br><li> Không nên xóa tên tác giả</li>" +
+                    "<li> Học kỳ nào, tải kỳ đó</li>" +
+                    "<li> Không khuyến khích: chép hoàn toàn bài làm, học key để thi final</li><br> Cảm ơn các bạn đã đọc<br>" +
+                    "<hr><span style=\"color:orangered\">satellite1012</span><br></div>",
+                icon: 'warning',
+                showCancelButton: true,
+                showConfirmButton: false,
+                confirmButtonColor: '',
+                cancelButtonColor: '#3085d6',
+                cancelButtonText: 'OK!',
+                allowClickOutside: false,
+                allowOutsideClick:false
+            })
+        }
+    </script>
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Adsense Load Ads -->
+    <script data-ad-client="ca-pub-3357448996497052" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-3357448996497052"
+         data-ad-slot="5862957737"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+</th:block>
