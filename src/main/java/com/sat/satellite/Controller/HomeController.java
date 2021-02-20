@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class HomeController implements ErrorController {
 
@@ -48,7 +50,7 @@ public class HomeController implements ErrorController {
     }
 
     @GetMapping(value = "/student/{student_name}")
-    public String getClassesStudentJoined(@PathVariable("student_name") String student_name, Model model) {
+    public String getClassesStudentJoined(@PathVariable("student_name") String student_name,HttpServletRequest request, Model model) {
         try {
             StudentEntity student=studentRepository.findByStudentName(student_name).get(0);
             model.addAttribute("StudentSelectedClassList",studentClassRepository.findByStudentID(student.getId()));
